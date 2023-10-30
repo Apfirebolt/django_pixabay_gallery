@@ -44,6 +44,15 @@ class UserRegistrationForm(forms.ModelForm):
                 code='username_required'
             )
         return username
+    
+    def clean_profile_image(self):
+        profile_image = self.cleaned_data.get('profile_image')
+        if not profile_image:
+            raise forms.ValidationError(
+                self.error_messages['valid_images'],
+                code='valid_images'
+            )
+        return profile_image
 
     def save(self, commit=True):
         user = super(UserRegistrationForm, self).save(commit=False)

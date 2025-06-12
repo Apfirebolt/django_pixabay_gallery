@@ -82,13 +82,14 @@ WSGI_APPLICATION = 'django_gallery.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+# Docker friendly settings, replace db with localhost if not using Docker
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'django_gallery',
         'USER': 'postgres',
         'PASSWORD': 'pass123',
-        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
+        'HOST': 'db',   # Or an IP Address that your DB is hosted on
         'PORT': '5432',
     }
 }

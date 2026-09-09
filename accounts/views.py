@@ -44,3 +44,9 @@ class LoginView(View):
 
     def get(self, request):
         return render(request, 'accounts/login.html', {})
+
+    
+class DashboardView(View):
+
+    def get(self, request):
+        return render(request, 'accounts/dashboard.html', {})

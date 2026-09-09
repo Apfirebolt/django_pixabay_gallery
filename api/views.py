@@ -4,9 +4,9 @@ from rest_framework.authentication import TokenAuthentication
 from . permissions import IsAdmin
 from rest_framework import status
 from rest_framework.response import Response
-from . serializers import CustomUserSerializer, GallerySerializer
+from . serializers import CustomUserSerializer, GallerySerializer, GalleryImageSerializer
 from accounts.models import CustomUser
-from gallery.models import Gallery
+from gallery.models import Gallery, GalleryImage
 
 
 
@@ -55,6 +55,17 @@ class RetrieveUpdateDestroyGalleryView(RetrieveUpdateDestroyAPIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Gallery.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class CreateGalleryImageApiView(CreateAPIView):
+    serializer_class = GalleryImageSerializer
+    queryset = GalleryImage.objects.all()
+    permission_classes = [IsAuthenticated]
+
+
+class ListGalleryImageApiView(ListAPIView):
+    serializer_class = GallerySerializer
+    queryset = GalleryImage.objects.all()
 
 
 

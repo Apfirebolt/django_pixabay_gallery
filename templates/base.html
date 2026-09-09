@@ -1,21 +1,40 @@
 {% load static %}
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}Django Gallery{% endblock %}</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&family=Nunito&family=PT+Sans&family=Roboto&display=swap" rel="stylesheet">
 
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
+      href="https://fonts.googleapis.com/css2?family=Lato&family=Nunito&family=PT+Sans&family=Roboto&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
-</head>
-<body>
-{% block content %}
 
-{% endblock %}
-</body>
+    <!-- Modern Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Import Map: Enables clean `import { createApp } from 'vue'` in any static JS file -->
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://cdn.jsdelivr.net/npm/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+
+    {% block head %}{% endblock %}
+  </head>
+  <body class="bg-gray-100 min-h-screen text-slate-800">
+    <!-- Vue Mount Root (Contains ONLY template markup, NO script blocks) -->
+    <div id="app">
+      {% block content %}{% endblock %}
+    </div>
+
+    <!-- Scripts placed strictly OUTSIDE the Vue mounting root -->
+    {% block scripts %}{% endblock %}
+  </body>
 </html>

@@ -2,7 +2,7 @@ from django.urls import path
 from django.conf.urls.static import static
 from django_gallery import settings
 from . views import (  CreateCustomUserApiView, ListCustomUsersApiView, ManageUserView, CreateGalleryApiView, ListGalleryApiView \
-                     , RetrieveUpdateDestroyGalleryView )
+                     , RetrieveUpdateDestroyGalleryView, CreateGalleryImageApiView, ListGalleryImageApiView )
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = [
@@ -13,6 +13,8 @@ urlpatterns = [
     path('gallery', ListGalleryApiView.as_view(), name='gallery-list'),
     path('gallery/<int:id>', RetrieveUpdateDestroyGalleryView.as_view(), name='gallery-crud'),
     path('gallery/create', CreateGalleryApiView.as_view(), name='gallery-create'),
+    path('gallery-image', ListGalleryImageApiView.as_view(), name='gallery-image-list'),
+    path('gallery-image/create', CreateGalleryImageApiView.as_view(), name='gallery-image-create'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,7 +1,7 @@
 from django.urls import path
 from django.conf.urls.static import static
 from django_gallery import settings
-from . views import LoginView, RegisterUser
+from . views import LoginView, RegisterUser, DashboardView
 import django.contrib.auth.views as AuthViews
 
 
@@ -9,6 +9,7 @@ urlpatterns = [
     path('login', LoginView.as_view(), name='login'),
     path('logout', AuthViews.LogoutView.as_view(), name='logout'),
     path('register', RegisterUser.as_view(), name='register'),
+    path('dashboard', DashboardView.as_view(), name='dashboard'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

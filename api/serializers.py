@@ -1,6 +1,7 @@
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 from accounts.models import CustomUser
-from gallery.models import Gallery
+from gallery.models import Gallery, GalleryImage
 
 
 class CustomUserSerializer(serializers.ModelSerializer):
@@ -44,4 +45,24 @@ class GallerySerializer(serializers.ModelSerializer):
     
     def validate(self, attrs):
         return super().validate(attrs)
+    
+
+class GalleryImageSerializer(serializers.ModelSerializer):
+
+    MAX_IMAGE_SIZE = 5 * 1024 * 1024  # 5 MB
+
+    class Meta:
+        model = GalleryImage
+        fields = ('id', 'gallery', 'image', 'created_at', 'updated_at')
+
+
+    def validate_image(self, value):
+        if value.size > self.MAX_IMAGE_SIZE:
+            raise ValidationError(('Image size exceeds the maximum allowed size of 5 MB.'))
+        return value
+
+            
+
+    
+
         

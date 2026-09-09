@@ -91,7 +91,7 @@ DATABASES = {
         'NAME': 'django_gallery',
         'USER': 'postgres',
         'PASSWORD': 'pass123',
-        'HOST': 'db',   # Or an IP Address that your DB is hosted on
+        'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '5432',
     }
 }

@@ -17,6 +17,25 @@
     <!-- Modern Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Tailwind Configuration for CDN -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                light: '#67e8f9',
+                DEFAULT: '#0891b2',
+                dark: '#164e63',
+              },
+              accent: '#f43f5e',
+              primary: '#0891b2',
+            }
+          }
+        }
+      }
+    </script>
+
     <!-- Import Map: Enables clean `import { createApp } from 'vue'` in any static JS file -->
     <script type="importmap">
       {

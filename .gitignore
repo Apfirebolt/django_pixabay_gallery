@@ -34,3 +34,6 @@ yarn-error.log*
 
 # Ignore virtual environment
 venv
+
+# ignore tailwind binary
+tailwindcss

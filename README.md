@@ -20,6 +20,21 @@ $ python manage.py migrate
 $ python manage.py runserver
 ```
 
+## Tailwind CSS installation through CLI
+
+`
+curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-x64
+chmod +x tailwindcss-macos-x64
+mv tailwindcss-macos-x64 tailwindcss
+`
+
+`
+chmod +x tailwindcss
+`
+
+`
+./tailwindcss -i ./static/css/input.css -o ./static/css/output.css --minify
+`
 ## Features
 
 * Basic Django scaffolding (commands, templatetags, statics, media files, etc).
